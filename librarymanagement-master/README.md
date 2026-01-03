@@ -1,13 +1,12 @@
-# Library Management
-![developer](https://img.shields.io/badge/Developed%20By%20%3A-Sumit%20Kumar-red)
+# Quản lý phòng LAP
 ---
-## screenshots
-### Homepage
-![homepage snap](https://github.com/sumitkumar1503/librarymanagement/blob/master/static/screenshots/homepage.png?raw=true)
-### Admin Dashboard
-![dashboard snap](https://github.com/sumitkumar1503/librarymanagement/blob/master/static/screenshots/adminhomepage.png?raw=true)
-### Available Book
-![invoice snap](https://github.com/sumitkumar1503/librarymanagement/blob/master/static/screenshots/availablebook.png?raw=true)
+## Chụp dạ án
+### Trang chủ
+![Trang chủ](static/images/trang_chu.png)
+### Đăng nhập ADMIN
+![Đăng nhập ADMIN](static/images/dangnhapqtv.png)
+### Quản lý thiết bị
+![Quản lý thiết bị](static/images/quanlythietbi.png)
 ### Issue Book
 ![doctor snap](https://github.com/sumitkumar1503/librarymanagement/blob/master/static/screenshots/issuebook.png?raw=true)
 ### Issued Book
