@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <title>Cấp Phát Thiết Bị</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <style>
+      body {
+          background-color: #f0f2f5;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      /* Card chứa form */
+      .card-custom {
+          margin-top: 50px;
+          border: none;
+          border-radius: 15px;
+          box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+          overflow: hidden;
+          background: white;
+      }
+
+      /* Tiêu đề card */
+      .card-header-custom {
+          background: linear-gradient(135deg, #007bff 0%, #0056b3 100%); /* Màu xanh Tech */
+          color: white;
+          padding: 25px;
+          text-align: center;
+      }
+
+      .card-header-custom h3 {
+          margin: 0;
+          font-weight: bold;
+          font-size: 22px;
+          text-transform: uppercase;
+      }
+
+      .form-content {
+          padding: 40px;
+      }
+
+      /* CSS để ép kiểu cho Input/Select của Django Form đẹp như Bootstrap */
+      .form-group input, .form-group select {
+          display: block;
+          width: 100%;
+          height: 50px;
+          padding: .375rem .75rem;
+          font-size: 1rem;
+          font-weight: 400;
+          line-height: 1.5;
+          color: #495057;
+          background-color: #fff;
+          background-clip: padding-box;
+          border: 1px solid #ced4da;
+          border-radius: 25px; /* Bo tròn mềm mại */
+          transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+          outline: none;
+      }
+
+      .form-group input:focus, .form-group select:focus {
+          border-color: #80bdff;
+          box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+      }
+
+      .form-group label {
+          font-weight: 600;
+          color: #555;
+          margin-bottom: 8px;
+          margin-left: 10px;
+      }
+
+      /* Nút xác nhận */
+      .btn-submit {
+          background: #28a745;
+          border: none;
+          color: white;
+          border-radius: 25px;
+          padding: 12px 30px;
+          font-weight: bold;
+          font-size: 18px;
+          width: 100%;
+          transition: all 0.3s;
+          margin-top: 20px;
+          text-transform: uppercase;
+      }
+
+      .btn-submit:hover {
+          background: #218838;
+          transform: translateY(-2px);
+          box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+      }
+
+      /* Style cho help text của Django (nếu có) */
+      .helptext {
+          font-size: 12px;
+          color: #888;
+          margin-left: 10px;
+      }
+  </style>
+</head>
+<body>
+
+{% include "library/navbaradmin.html" %}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card card-custom">
+
+                <div class="card-header-custom">
+                    <h3><i class="fas fa-hand-holding"></i> Phiếu Xuất Thiết Bị</h3>
+                    <p style="margin-bottom: 0; opacity: 0.8; font-size: 14px;">Chọn sinh viên và thiết bị cần cấp phát</p>
+                </div>
+
+                <div class="form-content">
+                    <form method="post">
+                        {% csrf_token %}
+
+                        {% for field in form %}
+                            <div class="form-group">
+                                <label>{{ field.label }}</label>
+
+                                {{ field }}
+
+                                {% if field.help_text %}
+                                    <small class="form-text text-muted">{{ field.help_text }}</small>
+                                {% endif %}
+
+                                {% for error in field.errors %}
+                                    <div class="alert alert-danger mt-2" style="font-size: 14px; padding: 5px 10px;">
+                                        {{ error }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                        <button type="submit" class="btn btn-submit">
+                            <i class="fas fa-check-circle"></i> Xác Nhận Cấp Phát
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br><br>
+{% include "library/footer.html" %}
+
+</body>
+</html>

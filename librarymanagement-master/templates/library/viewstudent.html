@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="vi" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Danh Sách Sinh Viên</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <style media="screen">
+      table.techTable {
+        border: 2px solid #0056b3;
+        background-color: #f8f9fa;
+        width: 100%;
+        text-align: center;
+        border-collapse: collapse;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      }
+
+      table.techTable td, table.techTable th {
+        border: 1px solid #dee2e6;
+        padding: 12px 10px;
+      }
+
+      table.techTable tbody td {
+        font-size: 15px;
+        color: #333;
+        vertical-align: middle;
+      }
+
+      /* Dòng chẵn màu xanh nhạt */
+      table.techTable tr:nth-child(even) {
+        background: #e3f2fd;
+      }
+
+      /* Header màu xanh đậm */
+      table.techTable thead {
+        background: #007bff;
+        border-bottom: 3px solid #004494;
+      }
+
+      table.techTable thead th {
+        font-size: 16px;
+        font-weight: bold;
+        color: #FFFFFF;
+        text-align: center;
+        text-transform: uppercase;
+        padding: 15px;
+      }
+
+      /* Footer bảng */
+      table.techTable tfoot {
+        font-size: 14px;
+        font-weight: bold;
+        color: #FFFFFF;
+        background: #0056b3;
+      }
+
+      table.techTable tfoot td {
+        padding: 10px;
+      }
+
+      /* Style cho Badge ngành học */
+      .branch-badge {
+          background-color: #17a2b8; /* Màu xanh ngọc */
+          color: white;
+          padding: 6px 12px;
+          border-radius: 20px;
+          font-size: 13px;
+          font-weight: bold;
+          box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      }
+
+      /* Style cho MSSV (Font dạng code) */
+      .enrollment-code {
+          font-family: 'Courier New', Courier, monospace;
+          font-weight: bold;
+          color: #dc3545;
+          font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    {% include "library/navbaradmin.html" %}
+    <br>
+    <br>
+
+    <div class="container">
+        <h3 class="p-3 mb-2 text-white" style='background-color: #007bff; font-size: 24px; text-align:center; margin-bottom:0px; border-radius: 5px 5px 0 0; text-transform: uppercase;'>
+            <i class="fa fa-users"></i> Danh Sách Sinh Viên Đã Đăng Ký
+        </h3>
+
+        {% if students %}
+        <table class="techTable">
+            <thead>
+                <tr>
+                    <th style="width: 35%;">Họ và Tên</th>
+                    <th style="width: 30%;">Mã Số SV (Enrollment)</th>
+                    <th style="width: 35%;">Ngành / Khoa</th>
+                </tr>
+            </thead>
+
+            <tbody>
+              {% for s in students %}
+                <tr>
+                  <td style="font-weight: 600;">{{s.get_name}}</td>
+                  <td><span class="enrollment-code">{{s.enrollment}}</span></td>
+                  <td><span class="branch-badge">{{s.branch}}</span></td>
+                </tr>
+              {% endfor %}
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <td colspan="3" style="text-align: right; padding-right: 20px;">
+                        Tổng số sinh viên: {{ students|length }}
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+
+        {% else %}
+
+        <div style="text-align: center; margin-top: 50px; padding: 40px; background: white; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+            <h1 style="font-size: 60px;">🎓</h1>
+            <h3 style="color: #6c757d;">Chưa có sinh viên nào đăng ký</h3>
+            <p class="text-muted">Danh sách sinh viên sẽ hiện ra tại đây sau khi họ đăng ký tài khoản.</p>
+        </div>
+
+        {% endif %}
+    </div>
+
+    <br><br><br><br><br>
+    {% include "library/footer.html" %}
+  </body>
+</html>

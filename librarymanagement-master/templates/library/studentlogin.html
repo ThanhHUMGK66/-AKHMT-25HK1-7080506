@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <title>Đăng Nhập Sinh Viên</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    /* Hình nền cho trang Login Sinh Viên */
+    body {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1497633762265-9d179a990aa6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .login-card {
+       background: rgba(255, 255, 255, 0.95);
+       padding: 40px;
+       border-radius: 15px;
+       box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+       width: 100%;
+       max-width: 400px;
+    }
+
+    .form-control {
+        height: 45px;
+        border-radius: 25px;
+        padding-left: 20px;
+        background-color: #f8f9fa;
+    }
+
+    .btn-submit {
+       width: 100%;
+       height: 45px;
+       border-radius: 25px;
+       font-weight: bold;
+       font-size: 16px;
+       margin-top: 15px;
+       background: #007bff;
+       border: none;
+       transition: 0.3s;
+    }
+
+    .btn-submit:hover {
+        background: #0056b3;
+        transform: scale(1.02);
+    }
+  </style>
+</head>
+<body>
+
+  <a href="/" style="position: absolute; top: 20px; left: 20px; color: white; text-decoration: none; font-size: 16px; font-weight: bold;">
+      <i class="fas fa-arrow-left"></i> Trang Chủ
+  </a>
+
+  <div class="login-card">
+     <div class="text-center mb-4">
+        <h2 style="font-weight: bold; color: #007bff;"><i class="fas fa-user-graduate"></i> Sinh Viên</h2>
+        <p class="text-muted">Đăng nhập hệ thống LabTrack</p>
+     </div>
+
+     <form method="post">
+       {% csrf_token %}
+
+       <div class="form-group">
+          <label style="font-weight: 600;">Tên đăng nhập</label>
+          <div class="input-group">
+              <input type="text" name="username" class="form-control" placeholder="Nhập username..." required>
+          </div>
+       </div>
+
+       <div class="form-group">
+          <label style="font-weight: 600;">Mật khẩu</label>
+          <div class="input-group">
+              <input type="password" name="password" class="form-control" placeholder="Nhập mật khẩu..." required>
+          </div>
+       </div>
+
+       <button type="submit" class="btn btn-primary btn-submit">
+           <i class="fas fa-sign-in-alt"></i> ĐĂNG NHẬP
+       </button>
+     </form>
+
+     <div class="text-center mt-4">
+        <span style="font-size: 14px; color: #666;">Chưa có tài khoản? <a href="studentsignup" style="color: #007bff; font-weight: bold;">Đăng ký ngay</a></span>
+     </div>
+  </div>
+
+</body>
+</html>

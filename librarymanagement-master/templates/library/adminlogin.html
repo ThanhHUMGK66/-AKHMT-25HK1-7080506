@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <title>Đăng Nhập Quản Trị</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <style>
+    /* Hình nền công nghệ/thư viện sang trọng */
+    body {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1507842217121-9e93c2dad960?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .login-card {
+       background: rgba(255, 255, 255, 0.95);
+       padding: 40px;
+       border-radius: 15px;
+       box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+       width: 100%;
+       max-width: 400px;
+       position: relative;
+    }
+
+    /* Input bo tròn */
+    .form-control {
+        height: 45px;
+        border-radius: 25px;
+        padding-left: 20px;
+        background-color: #f8f9fa;
+        font-size: 15px;
+    }
+
+    .form-control:focus {
+        border-color: #dc3545; /* Màu đỏ Admin */
+        box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+    }
+
+    /* Nút Đăng nhập Admin màu đỏ để thể hiện quyền quản trị */
+    .btn-submit {
+       width: 100%;
+       height: 45px;
+       border-radius: 25px;
+       font-weight: bold;
+       font-size: 16px;
+       margin-top: 20px;
+       background: #dc3545;
+       border: none;
+       color: white;
+       transition: 0.3s;
+       text-transform: uppercase;
+    }
+
+    .btn-submit:hover {
+        background: #c82333;
+        transform: scale(1.02);
+        box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
+    }
+
+    /* Nút quay về trang chủ */
+    .home-link {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+    .home-link:hover {
+        color: #ddd;
+        text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="/" class="home-link">
+      <i class="fas fa-arrow-left"></i> Trang Chủ
+  </a>
+
+  <div class="login-card">
+     <div class="text-center mb-4">
+        <div style="font-size: 50px; color: #dc3545; margin-bottom: 10px;">
+            <i class="fas fa-user-shield"></i>
+        </div>
+        <h3 style="font-weight: bold; color: #333;">Quản Trị Viên</h3>
+        <p class="text-muted" style="font-size: 14px;">Đăng nhập hệ thống quản lý</p>
+     </div>
+
+     <form method="post">
+       {% csrf_token %}
+
+       <div class="form-group">
+          <label style="font-weight: 600; color: #555;">Tên đăng nhập</label>
+          <div class="input-group">
+              <input type="text" name="username" class="form-control" placeholder="Nhập username..." required>
+          </div>
+       </div>
+
+       <div class="form-group">
+          <label style="font-weight: 600; color: #555;">Mật khẩu</label>
+          <div class="input-group">
+              <input type="password" name="password" class="form-control" placeholder="Nhập mật khẩu..." required>
+          </div>
+       </div>
+
+       <button type="submit" class="btn btn-submit">
+           <i class="fas fa-sign-in-alt"></i> Đăng Nhập
+       </button>
+     </form>
+
+     <div class="text-center mt-4">
+        <p class="text-muted" style="font-size: 13px;">
+            <i class="fas fa-info-circle"></i> Khu vực dành riêng cho cán bộ quản lý.
+        </p>
+     </div>
+  </div>
+
+</body>
+</html>

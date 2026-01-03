@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <style media="screen">
+      /* Sửa tên class từ redTable thành techTable và đổi màu sang Xanh dương */
+      table.techTable {
+        border: 2px solid #0056b3; /* Viền xanh đậm */
+        background-color: #f8f9fa; /* Nền trắng xám nhẹ */
+        width: 100%;
+        text-align: center;
+        border-collapse: collapse;
+      }
+      table.techTable td, table.techTable th {
+        border: 1px solid #dee2e6;
+        padding: 8px 5px; /* Tăng khoảng cách cho dễ nhìn */
+      }
+      table.techTable tbody td {
+        font-size: 14px; /* Tăng cỡ chữ lên chút */
+        color: #333;
+      }
+      /* Các dòng chẵn sẽ có màu xanh nhạt */
+      table.techTable tr:nth-child(even) {
+        background: #e3f2fd;
+      }
+      /* Header của bảng màu Xanh dương */
+      table.techTable thead {
+        background: #007bff; /* Màu xanh chuẩn Bootstrap */
+      }
+      table.techTable thead th {
+        font-size: 16px;
+        font-weight: bold;
+        color: #FFFFFF;
+        text-align: center;
+        border-left: 2px solid #0056b3;
+      }
+      table.techTable thead th:first-child {
+        border-left: none;
+      }
+
+      /* Footer bảng */
+      table.techTable tfoot {
+        font-size: 13px;
+        font-weight: bold;
+        color: #FFFFFF;
+        background: #0056b3;
+      }
+      table.techTable tfoot td {
+        font-size: 13px;
+      }
+      table.techTable tfoot .links {
+        text-align: right;
+      }
+      table.techTable tfoot .links a{
+        display: inline-block;
+        background: #FFFFFF;
+        color: #0056b3;
+        padding: 2px 8px;
+        border-radius: 5px;
+      }
+
+      /* Style cho thông báo rỗng */
+      .empty-state {
+        text-align: center;
+        margin-top: 50px;
+        color: #6c757d;
+      }
+    </style>
+  </head>
+  <body>
+    {% include "library/navbaradmin.html" %}
+    <br>
+    <br>
+
+    <h3 class="p-3 mb-2 bg-primary text-white" style='font-size: 30px; text-align:center; border-radius: 5px;'>
+        DANH SÁCH THIẾT BỊ TRONG KHO
+    </h3>
+
+    {% if books %}
+      <table class="techTable">
+        <thead>
+          <tr>
+            <th>Tên Thiết Bị / Máy Móc</th>
+            <th>Mã Tài Sản (Asset ID)</th>
+            <th>Hãng SX / Cấu Hình</th>
+            <th>Loại Thiết Bị</th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+            <td colspan="4">
+              <div class="links">Tổng số: {{ books|length }} thiết bị</div>
+            </td>
+          </tr>
+        </tfoot>
+        <tbody>
+          {% for book in books %}
+            <tr>
+              <td><strong>{{book.name}}</strong></td>
+              <td><span style="color: #dc3545; font-weight: bold;">#{{book.isbn}}</span></td>
+              <td>{{book.author}}</td>
+              <td>{{book.get_category_display}}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <div class="empty-state">
+          <h1>📭</h1>
+          <h3>Kho thiết bị hiện đang trống</h3>
+          <p>Vui lòng thêm thiết bị mới vào hệ thống.</p>
+      </div>
+    {% endif %}
+
+    <br><br><br><br><br><br><br><br><br>
+    {% include "library/footer.html" %}
+  </body>
+</html>

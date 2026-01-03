@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <title>Dashboard Sinh Viên</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <style>
+    body {
+        background-color: #f4f6f9; /* Màu nền xám xanh hiện đại */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Phần Header chào mừng */
+    .welcome-header {
+        background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+        color: white;
+        padding: 40px 0;
+        margin-bottom: -50px; /* Tạo hiệu ứng thẻ nổi đè lên header */
+        text-align: center;
+    }
+
+    /* Card chứa nội dung chính */
+    .dashboard-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+
+    .main-card {
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        padding: 40px;
+        margin-bottom: 40px;
+    }
+
+    /* Style cho các nút chức năng dạng thẻ */
+    .feature-card {
+        border: none;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        text-decoration: none !important;
+        display: block;
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+
+    .card-body-custom {
+        padding: 30px;
+        text-align: center;
+        color: white;
+    }
+
+    .icon-box {
+        font-size: 40px;
+        margin-bottom: 15px;
+        opacity: 0.9;
+    }
+
+    .card-title {
+        font-size: 18px;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 5px;
+    }
+
+    .card-desc {
+        font-size: 13px;
+        opacity: 0.8;
+    }
+
+    /* Màu sắc riêng cho từng thẻ */
+    .bg-blue { background: linear-gradient(45deg, #4099ff, #73b4ff); }
+    .bg-green { background: linear-gradient(45deg, #2ed8b6, #59e0c5); }
+    .bg-yellow { background: linear-gradient(45deg, #FFB64D, #ffcb80); }
+    .bg-red { background: linear-gradient(45deg, #ff5370, #ff869a); }
+
+  </style>
+</head>
+<body>
+
+  {% include "library/navbarstudent.html" %}
+
+  <div class="welcome-header">
+      <div class="container">
+          <h1 style="font-weight: 300;">Xin chào, <b>{{user.first_name}}</b>!</h1>
+          <p class="lead" style="font-size: 16px; opacity: 0.9;">Chúc bạn một ngày học tập và làm việc hiệu quả tại Phòng Lab.</p>
+      </div>
+  </div>
+
+  <div class="dashboard-container">
+      <div class="main-card">
+          <div class="row">
+              <div class="col-12 mb-4">
+                  <h4 style="color: #444; border-left: 5px solid #007bff; padding-left: 15px;">
+                      Danh Mục Chức Năng
+                  </h4>
+              </div>
+
+              <div class="col-md-6 mb-4">
+                  <a href="viewissuedbookbystudent" class="feature-card bg-blue">
+                      <div class="card-body-custom">
+                          <div class="icon-box"><i class="fas fa-desktop"></i></div>
+                          <div class="card-title">Thiết Bị Đang Mượn</div>
+                          <div class="card-desc">Kiểm tra danh sách máy móc, hạn trả và tiền phạt (nếu có).</div>
+                      </div>
+                  </a>
+              </div>
+
+              <div class="col-md-6 mb-4">
+                  <a href="contactus" class="feature-card bg-green">
+                      <div class="card-body-custom">
+                          <div class="icon-box"><i class="fas fa-headset"></i></div>
+                          <div class="card-title">Hỗ Trợ & Báo Lỗi</div>
+                          <div class="card-desc">Gửi yêu cầu hỗ trợ kỹ thuật hoặc báo cáo sự cố thiết bị.</div>
+                      </div>
+                  </a>
+              </div>
+
+              <div class="col-md-6 mb-4">
+                  <a href="aboutus" class="feature-card bg-yellow">
+                      <div class="card-body-custom">
+                          <div class="icon-box"><i class="fas fa-book-open"></i></div>
+                          <div class="card-title">Quy Định Phòng Lab</div>
+                          <div class="card-desc">Xem nội quy sử dụng và quy trình mượn trả tài sản.</div>
+                      </div>
+                  </a>
+              </div>
+
+              <div class="col-md-6 mb-4">
+                  <a href="logout" class="feature-card bg-red">
+                      <div class="card-body-custom">
+                          <div class="icon-box"><i class="fas fa-sign-out-alt"></i></div>
+                          <div class="card-title">Đăng Xuất</div>
+                          <div class="card-desc">Thoát khỏi hệ thống an toàn.</div>
+                      </div>
+                  </a>
+              </div>
+
+          </div>
+      </div>
+  </div>
+
+  {% include "library/footer.html" %}
+
+</body>
+</html>

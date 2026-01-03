@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load widget_tweaks %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Thêm Thiết Bị Mới</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style type="text/css">
+        body { color: #333; background-color: #f4f6f9; font-family: sans-serif; }
+        .signup-form { width: 500px; margin: 30px auto; }
+        .signup-form form { background: #fff; padding: 40px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .form-control { min-height: 45px; border-radius: 5px; }
+        .btn { font-size: 18px; font-weight: bold; background: #2196F3; border: none; width: 100%; height: 50px; border-radius: 5px; color: white; }
+        .btn:hover { background: #0d8bf2; }
+    </style>
+  </head>
+  <body>
+    {% include "library/navbaradmin.html" %}
+    <br><br>
+
+    <div class="signup-form">
+        <form method="post" class="form-horizontal">
+            {% csrf_token %}
+            <h2 class="text-center mb-4">NHẬP KHO THIẾT BỊ</h2>
+
+            <div class="form-group">
+                <label><b>Tên Thiết Bị / Máy Móc</b></label>
+                {% render_field form.name class="form-control" placeholder="Ví dụ: Laptop Dell Vostro 3500" %}
+            </div>
+
+            <div class="form-group">
+                <label><b>Mã Tài Sản (ID)</b></label>
+                {% render_field form.isbn class="form-control" placeholder="Ví dụ: 101" %}
+            </div>
+
+            <div class="form-group">
+                <label><b>Hãng Sản Xuất / Cấu Hình</b></label>
+                {% render_field form.author class="form-control" placeholder="Ví dụ: Dell, Core i5, RAM 8GB" %}
+            </div>
+
+            <div class="form-group">
+                <label><b>Loại Thiết Bị</b></label>
+                {% render_field form.category class="form-control" %}
+            </div>
+
+            <div class="form-group mt-4">
+                <button type="submit" class="btn">LƯU VÀO KHO</button>
+            </div>
+        </form>
+    </div>
+    {% include "library/footer.html" %}
+  </body>
+</html>

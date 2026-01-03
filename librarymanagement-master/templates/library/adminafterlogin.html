@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Dashboard Quản Trị</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <style media="screen">
+      /* Xóa CSS thừa, chỉ giữ lại những gì cần thiết */
+      .jumbotron {
+        margin-top: 20px;
+        background-color: #fff; /* Nền trắng cho sạch */
+        padding: 2rem 2rem;
+        box-shadow: 0 0 15px rgba(0,0,0,0.1); /* Đổ bóng nhẹ cho đẹp */
+        border-radius: 10px;
+      }
+
+      .action-card {
+        margin-bottom: 20px;
+        transition: transform 0.3s;
+      }
+
+      /* Hiệu ứng khi di chuột vào nút */
+      .action-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .btn-dashboard {
+        width: 100%;
+        padding: 20px;
+        font-size: 18px;
+        font-weight: bold;
+        border-radius: 8px;
+        text-transform: uppercase;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .btn-dashboard i {
+        font-size: 30px;
+        margin-bottom: 5px;
+      }
+    </style>
+  </head>
+  <body style="background-color: #f0f2f5;"> {% include "library/navbaradmin.html" %}
+
+    <div class="container">
+        <br>
+        <div class="alert alert-success alert-dismissible fade show" role="alert" style="text-align: center; font-size: 18px;">
+            <strong><i class="fas fa-server"></i> Chào mừng đến với Hệ thống Quản lý Phòng Lab!</strong>
+        </div>
+
+        <div class="jumbotron">
+            <h1 class="display-4 text-center">Xin chào, {{user.first_name}}!</h1>
+            <p class="lead text-center">
+               Bạn đang đăng nhập với quyền <b style="color: #dc3545;">Quản Trị Viên (Admin)</b>.
+            </p>
+            <hr class="my-4">
+            <p class="text-center" style="margin-bottom: 30px; color: #666;">Vui lòng chọn chức năng quản lý bên dưới:</p>
+
+            <div class="row">
+                <div class="col-md-6 action-card">
+                    <a href="addbook" class="btn btn-primary btn-dashboard">
+                        <i class="fas fa-plus-circle"></i> Thêm Thiết Bị Mới
+                    </a>
+                </div>
+                <div class="col-md-6 action-card">
+                    <a href="viewbook" class="btn btn-info btn-dashboard" style="color: white;">
+                        <i class="fas fa-desktop"></i> Xem Kho Thiết Bị
+                    </a>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 action-card">
+                    <a href="issuebook" class="btn btn-warning btn-dashboard" style="color: white;">
+                        <i class="fas fa-hand-holding"></i> Cấp Phát / Cho Mượn
+                    </a>
+                </div>
+                <div class="col-md-4 action-card">
+                    <a href="viewissuedbook" class="btn btn-success btn-dashboard">
+                        <i class="fas fa-clipboard-list"></i> Danh Sách Đang Mượn
+                    </a>
+                </div>
+                <div class="col-md-4 action-card">
+                    <a href="viewstudent" class="btn btn-secondary btn-dashboard">
+                        <i class="fas fa-users"></i> Quản Lý Sinh Viên
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    {% include "library/footer.html" %}
+  </body>
+</html>

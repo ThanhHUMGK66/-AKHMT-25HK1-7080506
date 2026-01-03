@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <title>Cổng Admin - LabTrack Lite</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <style media="screen">
+    body {
+      background-color: #f0f2f5; /* Màu nền xám nhẹ */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Khung nội dung chính */
+    .jumbotron {
+      background-color: white;
+      margin-top: 80px; /* Cách lề trên */
+      margin-bottom: 60px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Đổ bóng đẹp */
+      border-radius: 15px;
+      padding: 3rem 2rem;
+      text-align: center;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Icon Admin to đẹp */
+    .admin-icon {
+        font-size: 80px;
+        color: #dc3545; /* Màu đỏ đặc trưng của Admin */
+        margin-bottom: 25px;
+    }
+
+    .display-4 {
+        font-weight: 600;
+        color: #333;
+        font-size: 2.5rem;
+    }
+
+    /* Style nút bấm */
+    .btn-login {
+       padding: 12px 50px;
+       font-size: 18px;
+       border-radius: 50px; /* Bo tròn nút */
+       font-weight: bold;
+       text-transform: uppercase;
+       letter-spacing: 1px;
+       box-shadow: 0 5px 15px rgba(220, 53, 69, 0.4);
+       transition: all 0.3s;
+       margin-top: 20px;
+    }
+
+    .btn-login:hover {
+        transform: translateY(-3px); /* Hiệu ứng nổi lên khi di chuột */
+        box-shadow: 0 8px 20px rgba(220, 53, 69, 0.6);
+    }
+  </style>
+</head>
+<body>
+
+  {% include "library/navbar.html" %}
+
+  <div class="container">
+
+    <div class="jumbotron">
+        <div class="admin-icon">
+            <i class="fas fa-user-shield"></i>
+        </div>
+
+        <h1 class="display-4">Xin Chào, Quản Trị Viên!</h1>
+
+        <p class="lead" style="color: #666; margin-top: 15px;">
+            Chào mừng bạn quay trở lại với <strong>Hệ thống Quản lý Phòng Lab (LabTrack Lite)</strong>.
+        </p>
+
+        <hr class="my-4">
+
+        <p class="mb-4">
+            Vui lòng đăng nhập để truy cập kho thiết bị, quản lý sinh viên và duyệt phiếu mượn trả.
+        </p>
+
+        <a class="btn btn-danger btn-lg btn-login" href="adminlogin" role="button">
+            <i class="fas fa-sign-in-alt"></i> Đăng Nhập Ngay
+        </a>
+    </div>
+
+  </div>
+
+  {% include "library/footer.html" %}
+
+</body>
+</html>

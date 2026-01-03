@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <title>Thiết Bị Của Tôi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <style media="screen">
+    table.techTable {
+      border: 2px solid #0056b3;
+      background-color: #f8f9fa;
+      width: 100%;
+      text-align: center;
+      border-collapse: collapse;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      margin-top: 20px;
+    }
+
+    table.techTable td, table.techTable th {
+      border: 1px solid #dee2e6;
+      padding: 12px 10px;
+    }
+
+    table.techTable tbody td {
+      font-size: 15px;
+      color: #333;
+      vertical-align: middle;
+    }
+
+    /* Dòng chẵn màu xanh nhạt */
+    table.techTable tr:nth-child(even) {
+      background: #e3f2fd;
+    }
+
+    /* Header màu xanh đậm */
+    table.techTable thead {
+      background: #007bff;
+      border-bottom: 3px solid #004494;
+    }
+
+    table.techTable thead th {
+      font-size: 14px;
+      font-weight: bold;
+      color: #FFFFFF;
+      text-align: center;
+      text-transform: uppercase;
+      padding: 15px;
+      white-space: nowrap;
+    }
+
+    /* Badge trạng thái */
+    .status-badge {
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    .status-issued { background-color: #ffc107; color: #212529; }
+    .status-returned { background-color: #28a745; color: white; }
+
+    .fine-alert { color: #dc3545; font-weight: bold; }
+    .no-fine { color: #28a745; font-weight: bold; }
+
+    /* Nút trả sách */
+    .btn-return {
+        background-color: #ffc107;
+        color: #212529;
+        font-weight: bold;
+        border: none;
+        padding: 5px 15px;
+        border-radius: 5px;
+        transition: 0.3s;
+        text-decoration: none;
+        display: inline-block;
+    }
+    .btn-return:hover {
+        background-color: #e0a800;
+        color: black;
+        text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  {% include "library/navbarstudent.html" %}
+  <br><br>
+
+  <div class="container-fluid" style="padding: 0 30px;">
+
+    <h3 class="p-3 mb-2 text-white" style='background-color: #007bff; font-size: 24px; text-align:center; margin-bottom:0px; border-radius: 5px 5px 0 0; text-transform: uppercase;'>
+        <i class="fas fa-list-alt"></i> Danh Sách Thiết Bị Bạn Đang Mượn
+    </h3>
+
+    {% if issued_data %}
+    <div class="table-responsive">
+        <table class="techTable">
+            <thead>
+                <tr>
+                    <th>MSSV</th>
+                    <th>Tên Thiết Bị</th>
+                    <th>Cấu Hình / Hãng</th>
+                    <th>Ngày Mượn</th>
+                    <th>Hạn Trả</th>
+                    <th>Tiền Phạt</th>
+                    <th>Trạng Thái</th>
+                    <th>Hành Động</th> </tr>
+            </thead>
+
+            <tbody>
+              {% for item in issued_data %}
+                <tr>
+                  <td style="font-family: monospace; font-weight: bold; color: #0056b3;">
+                      {{ item.enrollment }}
+                  </td>
+
+                  <td style="font-weight: 600; text-align: left; padding-left: 15px;">
+                      {{ item.book_name }}
+                  </td>
+
+                  <td style="font-size: 14px; color: #555;">{{ item.author }}</td>
+
+                  <td>{{ item.issue_date }}</td>
+
+                  <td style="color: #dc3545; font-weight: 600;">{{ item.expiry_date }}</td>
+
+                  <td>
+                      {% if item.fine > 0 %}
+                        <span class="fine-alert">{{ item.fine }} VND</span>
+                      {% else %}
+                        <span class="no-fine"><i class="fas fa-check"></i> 0 VND</span>
+                      {% endif %}
+                  </td>
+
+                  <td>
+                      {% if item.status == 'Issued' %}
+                          <span class="status-badge status-issued">Đang Mượn</span>
+                      {% else %}
+                          <span class="status-badge status-returned">Đã Trả</span>
+                      {% endif %}
+                  </td>
+
+                  <td>
+                      {% if item.status == 'Issued' %}
+                          <a href="/returnbook/{{ item.id }}" class="btn-return" onclick="return confirm('Bạn có chắc chắn muốn trả thiết bị này?');">
+                              <i class="fas fa-undo"></i> Trả Ngay
+                          </a>
+                      {% else %}
+                          <span class="text-success"><i class="fas fa-check-double"></i> Hoàn tất</span>
+                      {% endif %}
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    {% else %}
+    <div style="text-align: center; margin-top: 50px; padding: 40px; background: white; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+        <h1 style="font-size: 60px; color: #17a2b8;"><i class="fas fa-laptop"></i></h1>
+        <h3 style="color: #6c757d;">Bạn chưa mượn thiết bị nào</h3>
+        <p class="text-muted">Hãy liên hệ Admin phòng Lab để làm thủ tục mượn thiết bị.</p>
+    </div>
+    {% endif %}
+
+  </div>
+
+  <br><br><br>
+  {% include "library/footer.html" %}
+
+</body>
+</html>

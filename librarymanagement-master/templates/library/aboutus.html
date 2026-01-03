@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <title>Quy Định Phòng Lab</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <style>
+      body {
+          background-color: #f0f2f5;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      /* Khung chứa nội dung chính */
+      .rules-card {
+          background: white;
+          margin-top: 60px;
+          margin-bottom: 60px;
+          padding: 50px;
+          border-radius: 15px;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      }
+
+      .section-title {
+          color: #007bff; /* Màu xanh chủ đạo */
+          font-weight: bold;
+          text-transform: uppercase;
+          text-align: center;
+          margin-bottom: 40px;
+          border-bottom: 2px solid #e9ecef;
+          padding-bottom: 20px;
+      }
+
+      /* Style cho từng dòng nội quy */
+      .rule-item {
+          display: flex;
+          align-items: flex-start;
+          margin-bottom: 25px;
+          padding: 15px;
+          border-radius: 10px;
+          background-color: #f8f9fa;
+          transition: transform 0.2s;
+      }
+
+      .rule-item:hover {
+          transform: translateX(5px); /* Hiệu ứng di chuyển nhẹ khi di chuột */
+          background-color: #e3f2fd;
+      }
+
+      .rule-icon {
+          font-size: 24px;
+          color: #dc3545; /* Màu đỏ cho icon cảnh báo/quy định */
+          margin-right: 20px;
+          min-width: 30px;
+          text-align: center;
+          margin-top: 2px;
+      }
+
+      .rule-content h5 {
+          font-weight: bold;
+          margin-bottom: 5px;
+          color: #333;
+      }
+
+      .rule-content p {
+          margin: 0;
+          color: #666;
+          font-size: 15px;
+      }
+
+      .btn-back {
+          border-radius: 50px;
+          padding: 12px 35px;
+          font-weight: bold;
+          margin-top: 20px;
+          text-transform: uppercase;
+      }
+  </style>
+</head>
+<body>
+
+{% include "library/navbar.html" %}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+
+            <div class="rules-card">
+                <h2 class="section-title">
+                    <i class="fas fa-clipboard-list"></i> Nội Quy & Quy Định Phòng Lab
+                </h2>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="rule-item">
+                            <div class="rule-icon"><i class="fas fa-id-card"></i></div>
+                            <div class="rule-content">
+                                <h5>1. Thẻ Sinh Viên</h5>
+                                <p>Bắt buộc đeo thẻ sinh viên hoặc xuất trình giấy tờ tùy thân khi ra vào phòng thực hành.</p>
+                            </div>
+                        </div>
+
+                        <div class="rule-item">
+                            <div class="rule-icon"><i class="fas fa-ban"></i></div>
+                            <div class="rule-content">
+                                <h5>2. Ăn Uống</h5>
+                                <p>Tuyệt đối không mang đồ ăn, thức uống (trừ nước suối đóng chai) vào khu vực máy tính.</p>
+                            </div>
+                        </div>
+
+                        <div class="rule-item">
+                            <div class="rule-icon"><i class="fas fa-volume-mute"></i></div>
+                            <div class="rule-content">
+                                <h5>3. Trật Tự</h5>
+                                <p>Giữ gìn trật tự chung, không làm ồn, không chơi game trong giờ thực hành.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="rule-item">
+                            <div class="rule-icon"><i class="fas fa-desktop"></i></div>
+                            <div class="rule-content">
+                                <h5>4. Bảo Quản Thiết Bị</h5>
+                                <p>Không tự ý tháo lắp, di chuyển thiết bị. Không cài đặt phần mềm lạ gây hại cho máy.</p>
+                            </div>
+                        </div>
+
+                        <div class="rule-item">
+                            <div class="rule-icon"><i class="fas fa-power-off"></i></div>
+                            <div class="rule-content">
+                                <h5>5. Kết Thúc Buổi Học</h5>
+                                <p>Tắt máy tính, sắp xếp bàn ghế, chuột phím gọn gàng trước khi ra về.</p>
+                            </div>
+                        </div>
+
+                        <div class="rule-item">
+                            <div class="rule-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                            <div class="rule-content">
+                                <h5>6. Báo Cáo Sự Cố</h5>
+                                <p>Nếu phát hiện máy hỏng hóc, báo ngay cho cán bộ trực phòng Lab, không tự ý sửa chữa.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-5">
+                    <p class="text-muted font-italic">
+                        * Sinh viên vi phạm sẽ bị xử lý theo quy chế đào tạo của nhà trường.
+                    </p>
+                    <a href="/" class="btn btn-primary btn-back">
+                        <i class="fas fa-home"></i> Quay Về Trang Chủ
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include "library/footer.html" %}
+
+</body>
+</html>
